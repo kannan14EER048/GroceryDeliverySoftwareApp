@@ -1,5 +1,6 @@
 package com.project.grocerystore.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,7 +15,7 @@ public class GroceryItem {
 	private long quantity;
 	private double unitPrice;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="orderId")
 	private Order order;
 

@@ -15,12 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.grocerystore.entity.Customer;
 import com.project.grocerystore.service.CustomerServiceImpl;
 
-@RestController
-@CrossOrigin("*")
+@RestController 
 public class CustomerController {
 
-	@Autowired
-	private CustomerServiceImpl customerService;
+
+
+	@Autowired                                   //Spring container
+	private CustomerServiceImpl customerService; //CustomerServiceImpl obj=new CustomerServiceImpl()
 	
 	@PostMapping(value="/customeradd")
 	public String addCustomer(@RequestBody Customer customer) {
@@ -28,6 +29,7 @@ public class CustomerController {
 		return "Customer details are successfully added!!!";	
 	}
 	
+	@CrossOrigin(origins="http://localhost:4200")
 	@GetMapping(value="/showcustomers")
 	public List<Customer> fetchAllCustomers() {
 		return customerService.fetchAllCustomers();

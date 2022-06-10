@@ -9,19 +9,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToOne;                 
 
 @Entity
-public class Customer {
+public class Customer {  //Jpa, spring boot,hibernate
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	//@GeneratedValue(strategy=GenerationType.AUTO)
 	private long customerId;
 	private String customerName;
 	private String contactNo;
 	private String customerEmail;
 
-	@OneToMany(mappedBy = "customer")
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	private List<Order> order;
 
 	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
